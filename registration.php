@@ -54,16 +54,64 @@ if ( isset( $_POST['email'] ) && $_POST['email']!=''){
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-function valid()
-{
-if(document.registration.password.value!= document.registration.cpassword.value)
-{
-alert("Password and Re-Type Password Field do not match  !!");
-document.registration.cpassword.focus();
-return false;
-}
-return true;
-}
+
+function validate()
+    {
+        event.preventDefault()
+        console.log("heyyy")
+        var fname= document.getElementById("fname");
+        var p1=/^[A-Za-z]{2,}$/;
+        if(!p1.test(fname.value))
+        {
+        alert("Enter the name correctly");
+        fname.focus();
+		return false;
+        }
+        
+        var lname= document.getElementById("lname");
+        var p2=/^[A-Za-z]{2,}$/;
+        if(!p2.test(lname.value))
+        {
+        alert("Enter the name correctly");
+        lname.focus();
+		return false;
+        }
+        
+        var mname= document.getElementById("mname");
+        if(mname){
+            var p5=/^[A-Za-z]{2,}$/;
+        if(!p5.test(mname.value))
+        {
+        alert("Enter the name correctly");
+        mname.focus();
+		return false;
+        }}
+        
+        var email=document.getElementById("email");
+        var p3=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
+        if(!p3.test(email.value))
+        {
+        alert("Please provide a valid email");
+        email.focus();
+		return false;
+        }
+        var phno=document.getElementById("contact");
+        var p4=/^[0-9]{10}$/i;
+        if(!p4.test(phno.value))
+        {
+        alert("Enter 10 digits for the phone number");
+        phno.focus();
+		return false;
+        }
+		if(document.registration.password.value!= document.registration.cpassword.value)
+		{
+		alert("Password and Re-Type Password Field do not match  !!");
+		document.registration.cpassword.focus();
+		return false;
+		}
+		return true;
+    }
+
 </script>
 </head>
 <body>
@@ -83,7 +131,7 @@ return true;
 								<div class="panel panel-info">
 									<div class="panel-heading">Fill all Info</div>
 									<div class="panel-body">
-			<form method="post" action="" name="registration" class="form-horizontal" onSubmit="return valid();">
+			<form method="post" action="" name="registration" class="form-horizontal" onSubmit="return validate();">
 <div class="form-group">
 <label class="col-sm-2 control-label">First Name : </label>
 <div class="col-sm-8">
